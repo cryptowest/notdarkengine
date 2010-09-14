@@ -166,6 +166,13 @@ alias sysget {
   if ($1 = mobomodel) {
     return $wmiget(Win32_ComputerSystem).Model
   }
+  if ($1 = battery) {
+    if ($wmiget(Win32_Battery).EstimatedRunTime >= 60) {
+      return $floor($calc(($wmiget(Win32_Battery).EstimatedRunTime)/60)) hour $calc($wmiget(Win32_Battery).EstimatedRunTime - 60) minutes ( $+ $wmiget(Win32_Battery).EstimatedChargeRemaining $+ % $+ )
+      } else {
+      return $wmiget(Win32_Battery).EstimatedRunTimeEstimated minutes ( $+ $wmiget(Win32_Battery).EstimatedChargeRemaining $+ % $+ )
+    }
+  }
 }
 alias memory {
   if ($1 = allphysical) {

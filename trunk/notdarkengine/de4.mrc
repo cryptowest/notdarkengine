@@ -170,7 +170,7 @@ alias sysget {
     if ($wmiget(Win32_Battery).EstimatedRunTime >= 60) {
       return $floor($calc(($wmiget(Win32_Battery).EstimatedRunTime)/60)) hour $calc($wmiget(Win32_Battery).EstimatedRunTime - 60) minutes ( $+ $wmiget(Win32_Battery).EstimatedChargeRemaining $+ % $+ )
       } else {
-      return $wmiget(Win32_Battery).EstimatedRunTimeEstimated minutes ( $+ $wmiget(Win32_Battery).EstimatedChargeRemaining $+ % $+ )
+      return $wmiget(Win32_Battery).EstimatedRunTime minutes ( $+ $wmiget(Win32_Battery).EstimatedChargeRemaining $+ % $+ )
     }
   }
 }

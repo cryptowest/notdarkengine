@@ -1,4 +1,4 @@
-;NotDarkEngine (notde) by CoreDuo v0.3.6
+;NotDarkEngine (notde) by CoreDuo v0.3.7
 on *:load:{ echo -ae NotDarkEngine installed sucessfully... | dek 3 | fde }
 alias wmiget {
   var %com = cominfo, %com2 = cominfo2, %com3 = cominfo3

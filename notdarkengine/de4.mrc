@@ -169,7 +169,7 @@ alias sysget {
   if ($1 = battery) {
     if ($wmiget(Win32_Battery).EstimatedRunTime != 71582788) {
       if ($wmiget(Win32_Battery).EstimatedRunTime >= 60) {
-        return $floor($calc(($wmiget(Win32_Battery).EstimatedRunTime)/60)) hour $calc($wmiget(Win32_Battery).EstimatedRunTime - 60) minutes ( $+ $wmiget(Win32_Battery).EstimatedChargeRemaining $+ % $+ )
+        return $floor($calc(($wmiget(Win32_Battery).EstimatedRunTime)/60)) hour $calc($wmiget(Win32_Battery).EstimatedRunTime % 60) minutes ( $+ $wmiget(Win32_Battery).EstimatedChargeRemaining $+ % $+ )
         } else {
         return $wmiget(Win32_Battery).EstimatedRunTime minutes ( $+ $wmiget(Win32_Battery).EstimatedChargeRemaining $+ % $+ )
         } else {
@@ -318,7 +318,7 @@ alias id3 { dem ID3: $de(id3_test) }
 ;Misc Functions
 ;----
 alias about { action is using NotDarkEngine (notde) by CoreDuo v0.3.7 }
-alias sys { dem OS: $sysget(version)  $+ $dek $+ CPU: $sysget(cpu) $+ , $sysget(clockspeed) $+ ,   $+ $sysget(l2cache) $+   $+  $+ $dek $+ Video: $sysget(videocard) $+  ( $+ $sysget(screenres) $+ )  $+ $dek $+ Sound:  $+ $sysget(sound)  $+ $dek $+ Memory: Used: $memory(usedphysical) $+ / $+ $memory(allphysical)  $+ $dek $+ Uptime: $sysget(uptime)  $+ $dek $+ HD Space: Free: $de(harddrive_space_free) $+ / $+ $de(harddrive_space_total)  $+ $dek $+ Connection: $de(adapter_info_all) }
+alias sys { dem OS: $sysget(version)  $+ $dek $+ CPU: $sysget(cpu) $+ , $sysget(clockspeed) $+ ,   $+ $sysget(l2cache) $+   $+  $+ $dek $+ Video: $sysget(videocard) $+ Â ( $+ $sysget(screenres) $+ )  $+ $dek $+ Sound:Â  $+ $sysget(sound)  $+ $dek $+ Memory: Used: $memory(usedphysical) $+ / $+ $memory(allphysical)  $+ $dek $+ Uptime: $sysget(uptime)  $+ $dek $+ HD Space: Free: $de(harddrive_space_free) $+ / $+ $de(harddrive_space_total)  $+ $dek $+ Connection: $de(adapter_info_all) }
 ;Mainboard Functions
 ;----
 alias mobo_manu { dem Mainboard Vendor: $sysget(mobovendor) }

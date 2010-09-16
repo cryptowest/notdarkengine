@@ -93,7 +93,12 @@ alias sysget {
     }
     else { return $wmiget(Win32_Processor).L2CacheSize KB }
   }
-
+  if ($1 = l3cache) {
+    if ($wmiget(Win32_Processor).L3CacheSize >= 1024) {
+      return $calc(($wmiget(Win32_Processor).L3CacheSize)/1024) MB
+    }
+    else { return $wmiget(Win32_Processor).L3CacheSize KB }
+  }
   if ($1 = clockspeed) {
     if ($wmiget(Win32_Processor).CurrentClockSpeed >= 1000) {
       return $round($calc(($wmiget(Win32_Processor).CurrentClockSpeed)/1000),2) GHz
@@ -220,7 +225,7 @@ alias cpuspeed { dem CPU Speed: $sysget(clockspeed) }
 alias cpuload { dem CPU Load: $sysget(cpuload) }
 ;alias cpuarch { dem CPU Architecture: $de(cpuarchitech) }
 alias cpucount { dem CPU Count: $de(cpucount) }
-alias cpuinfo { dem CPU: $sysget(cpu) $+ , $sysget(clockspeed) $+ ,  $+ $sysget(l2cache) $+  ( $+ $sysget(cpuload) Load $+ ) }
+alias cpuinfo { dem CPU: $sysget(cpu) $+ , $sysget(clockspeed) $+ ,  $+ $sysget(l3cache) $+  ( $+ $sysget(cpuload) Load $+ ) }
 alias l1cache { dem L1 Cache: $de(cpu_cache_l1) }
 alias l2cache { dem L2 Cache: $sysget(l2cache) }
 alias l3cache { dem L3 Cache: $de(cpu_cache_l3) }

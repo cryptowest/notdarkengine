@@ -120,7 +120,7 @@ alias sysget {
     return $asctime($ctime($iif($wmiget(Win32_OperatingSystem).InstallDate,$+($mid($ifmatch,7,2),/,$mid($ifmatch,5,2),/,$mid($ifmatch,1,4)) $+($mid($ifmatch,9,2),:,$mid($ifmatch,11,2),:,$mid($ifmatch,13,2)))),dddd $+ $chr(44) mmmm d yyyy h:mm TT)
   }
   if ($1 = luptime) {
-    if ($newuptime(weeks) == 0 weeks) {
+    if ($newuptime(weeks) == 0 weeks) && ($newuptime(days) > 1) {
       return $newuptime(days) $newuptime(hours) $newuptime(minutes) $newuptime(seconds)
     }
     elseif ($newuptime(weeks) >= 1) && ($newuptime(days) == 0 days) {
@@ -171,11 +171,9 @@ alias sysget {
       if ($wmiget(Win32_Battery).EstimatedRunTime >= 60) {
         return $floor($calc(($wmiget(Win32_Battery).EstimatedRunTime)/60)) hour $calc($wmiget(Win32_Battery).EstimatedRunTime % 60) minutes ( $+ $wmiget(Win32_Battery).EstimatedChargeRemaining $+ % $+ )
         } else {
-        return $wmiget(Win32_Battery).EstimatedRunTime minutes ( $+ $wmiget(Win32_Battery).EstimatedChargeRemaining $+ % $+ )
-      }
+      return $wmiget(Win32_Battery).EstimatedRunTime minutes ( $+ $wmiget(Win32_Battery).EstimatedChargeRemaining $+ % $+ ) }
       } else {
       return Unknown ( $+ $wmiget(Win32_Battery).EstimatedChargeRemaining $+ % $+ )
-
     }
   }
 }

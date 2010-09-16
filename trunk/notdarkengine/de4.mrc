@@ -131,7 +131,7 @@ alias sysget {
     elseif ($newuptime(weeks) >= 1) && ($newuptime(days) == 0 days) {
       return $newuptime(weeks) $newuptime(hours) $newuptime(minutes) $newuptime(seconds)
     }
-    elseif ($newuptime(days) == 0 days) {
+    elseif ($newuptime(days) == 0 days) && ($newuptime(hours) > 1) {
       return $newuptime(hours) $newuptime(minutes) $newuptime(seconds)
     }
     elseif ($newuptime(days) == 0 days) && ($newuptime(hours) == 0 hours) {

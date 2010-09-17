@@ -195,6 +195,9 @@ alias sysget {
       return Unknown ( $+ $wmiget(Win32_Battery).EstimatedChargeRemaining $+ % $+ )
     }
   }
+  if ($1 = vram) {
+    return $bytes($wmiget(Win32_VideoController).AdapterRam,3).suf
+  }
 }
 alias memory {
   if ($1 = allphysical) {
@@ -346,7 +349,7 @@ alias mobo_all { dem Mainboard: $sysget(mobovendor) $sysget(mobomodel) $+  ( $
 ;Beta Functions
 ;----
 alias cdrom_drive { dem CDRom Drive: $de(cdrom_name) }
-alias video_card_ram { dem Video Card RAM: $de(video_card_ram) $+  MB }
+alias video_card_ram { dem Video Card RAM: $sysget(vram) }
 ;Unsupport Functions
 ;----
 alias batlife { dem Battery Life: $sysget(battery) }
@@ -412,6 +415,7 @@ menu channel,query {
   Video
   ..Video Card:/videocard
   ..-
+  ..Video Card RAM:/video_card_ram  
   ..Screen Resolution:/res
   ..Monitor Manufacturer:/monitor
   ..-
@@ -443,7 +447,6 @@ menu channel,query {
   ..Show All:/biosall
   Beta Functions
   ..CDRom Drive:/cdrom_drive
-  ..Video Card RAM:/video_card_ram
   .-
   Winamp
   ..Current Playing:/wamp

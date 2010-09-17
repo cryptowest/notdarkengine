@@ -85,7 +85,7 @@ alias sysget {
     if ($wmiget(Win32_Processor).Manufacturer == GenuineIntel) && (@ !isin $wmiget(Win32_Processor).Name) {
       return $remove($gettok($wmiget(Win32_Processor).Name,$+(1-,$iif($findtok($wmiget(Win32_Processor).Name,CPU,$findtok($wmiget(Win32_Processor).Name,CPU,0,32),32),$calc($v1 -1))),32),(TM),(R),processor)    
     }
-    else return $remove($wmiget(Win32_Processor).Name,(R),(TM),Processor,Mobile,Technology,Dual,Core,Quad-)
+    else return $remove($wmiget(Win32_Processor).Name,(R),(TM),Processor,Mobile,Technology,Dual,Core,Quad-,Quad)
   }
   if ($1 = l2cache) {
     if ($wmiget(Win32_Processor).L2CacheSize >= 1024) {

@@ -15,6 +15,7 @@ alias wmiget {
 alias biosvendor { dem Bios Vendor: $sysget(biosvendor) }
 alias biosdate { dem Bios Date: $sysget(biosdate) }
 alias biosversion { dem Bios Version: $sysget(biosversion) }
+alias biosall { dem Bios: $sysget(biosvendor) $sysget(biosversion) $+  ( $+ $sysget(biosdate) $+ ) }
 ;Operating System Information
 ;----
 alias stripslash {
@@ -73,6 +74,7 @@ alias cache {
     }
   }
 }
+
 
 alias sysget {
   if ($1 = version) {
@@ -340,6 +342,7 @@ alias sys { dem OS: $sysget(version)  $+ $dek $+ CPU: $sysget(cpu) $+ , $sy
 alias mobo_manu { dem Mainboard Vendor: $sysget(mobovendor) }
 alias mobo_name { dem Mainboard Name: $sysget(mobomodel) }
 alias mobo_ver { dem Mainboard Version: $de(mobo_version) }
+alias mobo_all { dem Mainboard: $sysget(mobovendor) $sysget(mobomodel) $+  ( $+ $de(mobo_version) $+ ) }
 ;Beta Functions
 ;----
 alias cdrom_drive { dem CDRom Drive: $de(cdrom_name) }
@@ -428,12 +431,16 @@ menu channel,query {
   ..Manufacturer:/mobo_manu
   ..Product Name:/mobo_name
   ..Version:/mobo_ver
+  ..-
+  ..Show All:/mobo_all
   Power
   ..Battery Life:/batlife
   System Bios
   ..Vendor:/biosvendor
   ..Date:/biosdate
   ..Version:/biosversion
+  ..-
+  ..Show All:/biosall
   Beta Functions
   ..CDRom Drive:/cdrom_drive
   ..Video Card RAM:/video_card_ram

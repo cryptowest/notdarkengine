@@ -349,7 +349,7 @@ alias mobo_manu { dem Mainboard Vendor: $sysget(mobovendor) }
 alias mobo_name { dem Mainboard Name: $sysget(mobomodel) }
 alias mobo_ver { dem Mainboard Version: $de(mobo_version) }
 alias mobo_all { dem Mainboard: $sysget(mobovendor) $sysget(mobomodel) $+  ( $+ $de(mobo_version) $+ ) }
-alias cdrom_drive { dem CDRom Drive: $sysget(cdrom) }
+alias cdrom_drive { dem Optical Drive: $sysget(cdrom) }
 alias video_card_ram { dem Video Card RAM: $sysget(vram) }
 ;Unsupport Functions
 ;----
@@ -407,7 +407,7 @@ menu channel,query {
   Drives
   ..Total HDD Space (Local):/hdtotal2
   ..Total HDD Space (Local + Networked):/hdtotal
-  ..CD-ROM Drive:/cdrom_drive
+  ..Optical Drive:/cdrom_drive
   ..-
   ..Show All Drives: /hd
   Uptime

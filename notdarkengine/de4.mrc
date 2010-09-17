@@ -225,7 +225,7 @@ alias cpuspeed { dem CPU Speed: $sysget(clockspeed) }
 alias cpuload { dem CPU Load: $sysget(cpuload) }
 ;alias cpuarch { dem CPU Architecture: $de(cpuarchitech) }
 alias cpucount { dem CPU Count: $de(cpucount) }
-alias cpuinfo { dem CPU: $sysget(cpu) $+ , $sysget(clockspeed) $+ ,  $+ $sysget(l3cache) $+  ( $+ $sysget(cpuload) Load $+ ) }
+alias cpuinfo { dem CPU: $sysget(cpu) $+ , $sysget(clockspeed) $+ ,  $+ $sysget(l2cache) $+  ( $+ $sysget(cpuload) Load $+ ) }
 alias l1cache { dem L1 Cache: $de(cpu_cache_l1) }
 alias l2cache { dem L2 Cache: $sysget(l2cache) }
 alias l3cache { dem L3 Cache: $sysget(l3cache) }
@@ -322,7 +322,7 @@ alias id3 { dem ID3: $de(id3_test) }
 ;Misc Functions
 ;----
 alias about { action is using NotDarkEngine (notde) by CoreDuo v0.3.7 }
-alias sys { dem OS: $sysget(version)  $+ $dek $+ CPU: $sysget(cpu) $+ , $sysget(clockspeed) $+ ,   $+ $sysget(l3cache) $+   $+  $+ $dek $+ Video: $sysget(videocard) $+  ( $+ $sysget(screenres) $+ )  $+ $dek $+ Sound:  $+ $sysget(sound)  $+ $dek $+ Memory: Used: $memory(usedphysical) $+ / $+ $memory(allphysical)  $+ $dek $+ Uptime: $sysget(uptime)  $+ $dek $+ HD Space: Free: $de(harddrive_space_free) $+ / $+ $de(harddrive_space_total)  $+ $dek $+ Connection: $de(adapter_info_all) }
+alias sys { dem OS: $sysget(version)  $+ $dek $+ CPU: $sysget(cpu) $+ , $sysget(clockspeed) $+ ,   $+ $sysget(l2cache) $+   $+  $+ $dek $+ Video: $sysget(videocard) $+  ( $+ $sysget(screenres) $+ )  $+ $dek $+ Sound:  $+ $sysget(sound)  $+ $dek $+ Memory: Used: $memory(usedphysical) $+ / $+ $memory(allphysical)  $+ $dek $+ Uptime: $sysget(uptime)  $+ $dek $+ HD Space: Free: $de(harddrive_space_free) $+ / $+ $de(harddrive_space_total)  $+ $dek $+ Connection: $de(adapter_info_all) }
 ;Mainboard Functions
 ;----
 alias mobo_manu { dem Mainboard Vendor: $sysget(mobovendor) }

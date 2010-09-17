@@ -198,6 +198,9 @@ alias sysget {
   if ($1 = vram) {
     return $bytes($wmiget(Win32_VideoController).AdapterRam,3).suf
   }
+  if ($1 = cdrom) {
+    return $wmiget(Win32_CDROMDrive).Caption
+  }
 }
 alias memory {
   if ($1 = allphysical) {
@@ -346,9 +349,7 @@ alias mobo_manu { dem Mainboard Vendor: $sysget(mobovendor) }
 alias mobo_name { dem Mainboard Name: $sysget(mobomodel) }
 alias mobo_ver { dem Mainboard Version: $de(mobo_version) }
 alias mobo_all { dem Mainboard: $sysget(mobovendor) $sysget(mobomodel) $+  ( $+ $de(mobo_version) $+ ) }
-;Beta Functions
-;----
-alias cdrom_drive { dem CDRom Drive: $de(cdrom_name) }
+alias cdrom_drive { dem CDRom Drive: $sysget(cdrom) }
 alias video_card_ram { dem Video Card RAM: $sysget(vram) }
 ;Unsupport Functions
 ;----
@@ -403,9 +404,10 @@ menu channel,query {
   ..Total Virtual Memory Used:/vmemratio
   ..-
   ..Show All Physical:/memsum
-  Hard Drive
-  ..Total Space (Local):/hdtotal2
-  ..Total Space (Local + Networked):/hdtotal
+  Drives
+  ..Total HDD Space (Local):/hdtotal2
+  ..Total HDD Space (Local + Networked):/hdtotal
+  ..CD-ROM Drive:/cdrom_drive
   ..-
   ..Show All Drives: /hd
   Uptime
@@ -445,9 +447,6 @@ menu channel,query {
   ..Version:/biosversion
   ..-
   ..Show All:/biosall
-  Beta Functions
-  ..CDRom Drive:/cdrom_drive
-  .-
   Winamp
   ..Current Playing:/wamp
   .-

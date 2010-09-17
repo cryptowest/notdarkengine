@@ -62,7 +62,7 @@ alias newuptime {
 
 }
 alias cache {
-  if ($wmiget(Win32_Processor).L3CacheSize) == NULL {
+  if ($wmiget(Win32_Processor).L3CacheSize) == NULL) {
     if ($wmiget(Win32_Processor).L2CacheSize >= 1024) {
       return $calc(($wmiget(Win32_Processor).L2CacheSize)/1024) MB
     }

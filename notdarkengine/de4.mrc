@@ -272,7 +272,7 @@ alias memsum { dem RAM: Used: $memory(usedphysical) $+ / $+ $memory(allphysical
 alias memslots { dem Total Memory Slots: $de(memory_slots) }
 ;Internet Connection Information
 ;----
-alias conn { dem Connection: $de(adapter_info_all) }
+alias conn { dem Connection: $remove($de(adapter_info_all), - Packet Scheduler Miniport ) }
 alias chadapter { $de(adapter_change) }
 alias totaldown { dem Total Downloaded: $de(bandwidth_down_total) $+ MB }
 alias totalup { dem Total Uploaded: $de(bandwidth_up_total) $+ MB }
@@ -334,7 +334,7 @@ alias id3 { dem ID3: $de(id3_test) }
 ;Misc Functions
 ;----
 alias about { action is using NotDarkEngine (notde) by CoreDuo v0.3.7 }
-alias sys { dem OS: $sysget(version)  $+ $dek $+ CPU: $sysget(cpu) $+ , $sysget(clockspeed) $+ ,   $+ $cache $+   $+  $+ $dek $+ Video: $sysget(videocard) $+  ( $+ $sysget(screenres) $+ )  $+ $dek $+ Sound:  $+ $sysget(sound)  $+ $dek $+ Memory: Used: $memory(usedphysical) $+ / $+ $memory(allphysical)  $+ $dek $+ Uptime: $sysget(uptime)  $+ $dek $+ HD Space: Free: $de(harddrive_space_free) $+ / $+ $de(harddrive_space_total)  $+ $dek $+ Connection: $de(adapter_info_all) }
+alias sys { dem OS: $sysget(version)  $+ $dek $+ CPU: $sysget(cpu) $+ , $sysget(clockspeed) $+ ,   $+ $cache $+   $+  $+ $dek $+ Video: $sysget(videocard) $+  ( $+ $sysget(screenres) $+ )  $+ $dek $+ Sound:  $+ $sysget(sound)  $+ $dek $+ Memory: Used: $memory(usedphysical) $+ / $+ $memory(allphysical)  $+ $dek $+ Uptime: $sysget(uptime)  $+ $dek $+ HD Space: Free: $de(harddrive_space_free) $+ / $+ $de(harddrive_space_total)  $+ $dek $+ Connection: $remove($de(adapter_info_all), - Packet Scheduler Miniport ) }
 ;Mainboard Functions
 ;----
 alias mobo_manu { dem Mainboard Vendor: $sysget(mobovendor) }

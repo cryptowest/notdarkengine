@@ -45,7 +45,7 @@ alias newuptime {
     }
   }
   if ($1 = days) {
-    if ($floor($calc($uptime(system,3)/(3600*24))) == 1) {
+    if ($floor($calc($uptime(system,3)/(3600*24) % 7)) == 1) {
       return $floor($calc($uptime(system,3)/(3600*24) % 7)) day
     }
     else {

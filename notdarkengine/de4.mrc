@@ -88,7 +88,7 @@ alias sysget {
       else { return Windows 98 $wmiget(Win32_OperatingSystem).CSDVersion ( $+ $wmiget(Win32_OperatingSystem).Version $+ ) }
     }
     if ($wmiget(Win32_OperatingSystem).CSDVersion >= 1) {
-      return $remove($wmiget(Win32_OperatingSystem).Caption,Edition,Microsoft,(R),(TM),$chr(44),$chr(226),$chr(132),$chr(162),$chr(194),$chr(226),$chr(174)) $+ $chr(32) $+ SP $+ $remove($wmiget(Win32_OperatingSystem).CSDVersion,Service,Pack,$chr(32)) ( $+ $wmiget(Win32_OperatingSystem).Version $+ ) 
+      return $remove($wmiget(Win32_OperatingSystem).Caption,Edition,Microsoft,(R),(TM),$chr(8482),$chr(44),$chr(226),$chr(132),$chr(162),$chr(194),$chr(226),$chr(174)) $+ $chr(32) $+ SP $+ $remove($wmiget(Win32_OperatingSystem).CSDVersion,Service,Pack,$chr(32)) ( $+ $wmiget(Win32_OperatingSystem).Version $+ ) 
     }
     else { return $remove($wmiget(Win32_OperatingSystem).Caption,Edition,Microsoft,(R),(TM),$chr(44),$chr(226),$chr(132),$chr(162),$chr(194),$chr(226),$chr(174)) $+ $chr(32) $+ ( $+ $wmiget(Win32_OperatingSystem).Version $+ ) }
   }

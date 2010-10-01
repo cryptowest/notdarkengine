@@ -23,11 +23,11 @@ alias stripslash {
 }
 alias newuptime {
   if ($1 = hours) {
-    if ($floor($calc($uptime(system,3) % 86400/3600)) == 1) {
-      return $floor($calc($uptime(system,3) % 86400/3600)) hour
+    if ($floor($calc($uptime(system,3) % 24)) == 1) {
+      return $floor($calc($uptime(system,3) % 24)) hour
     }
     else {
-      return $floor($calc($uptime(system,3) % 86400/3600)) hours
+      return $floor($calc($uptime(system,3) % 24)) hours
     }
   }
   if ($1 = minutes) {

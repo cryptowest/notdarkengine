@@ -31,33 +31,33 @@ alias newuptime {
     }
   }
   if ($1 = minutes) {
-    if ($floor($calc($uptime(system,3) % (3600*24) % 3600 / 60)) == 1) {
-      return $floor($calc($uptime(system,3) % (3600*24) % 3600 / 60)) minute
+    if ($floor($calc($uptime(system,3) % 86400 % 3600 / 60)) == 1) {
+      return $floor($calc($uptime(system,3) % 86400 % 3600 / 60)) minute
     }
-    else return $floor($calc($uptime(system,3) % (3600*24) % 3600 / 60)) minutes
+    else return $floor($calc($uptime(system,3) % 86400 % 3600 / 60)) minutes
   }
   if ($1 = seconds) {
-    if ($floor($calc($uptime(system,3) % (3600*24) % 3600 % 60)) == 1) {
-      return $floor($calc($uptime(system,3) % (3600*24) % 3600 % 60)) second
+    if ($floor($calc($uptime(system,3) % 86400 % 3600 % 60)) == 1) {
+      return $floor($calc($uptime(system,3) % 86400 % 3600 % 60)) second
     }
     else {
-      return $floor($calc($uptime(system,3) % (3600*24) % 3600 % 60)) seconds
+      return $floor($calc($uptime(system,3) % 86400 % 3600 % 60)) seconds
     }
   }
   if ($1 = days) {
-    if ($floor($calc($uptime(system,3)/(3600*24) % 7)) == 1) {
-      return $floor($calc($uptime(system,3)/(3600*24) % 7)) day
+    if ($floor($calc($uptime(system,3)/86400 % 7)) == 1) {
+      return $floor($calc($uptime(system,3)/86400 % 7)) day
     }
     else {
-      return $floor($calc($uptime(system,3)/(3600*24) % 7)) days
+      return $floor($calc($uptime(system,3)/86400 % 7)) days
     }
   }
   if ($1 = weeks) {
-    if ($floor($calc($uptime(system,3)/(3600*24)/7)) == 1) {
-      return $floor($calc($uptime(system,3)/(3600*24)/7)) week
+    if ($floor($calc($uptime(system,3)/86400/7)) == 1) {
+      return $floor($calc($uptime(system,3)/86400/7)) week
     }
     else {
-      return $floor($calc($uptime(system,3)/(3600*24)/7)) weeks
+      return $floor($calc($uptime(system,3)/86400/7)) weeks
     }
   }
 

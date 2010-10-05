@@ -237,7 +237,6 @@ alias cpuload { dem CPU Load: $sysget(cpuload) }
 ;alias cpuarch { dem CPU Architecture: $de(cpuarchitech) }
 alias cpucount { dem CPU Count: $de(cpucount) }
 alias cpuinfo { dem CPU: $sysget(cpu) $+ , $sysget(clockspeed) $+ ,  $+ $cache $+  ( $+ $sysget(cpuload) Load $+ ) }
-alias l1cache { dem L1 Cache: $de(cpu_cache_l1) }
 alias l2cache { dem L2 Cache: $sysget(l2cache) }
 alias l3cache { dem L3 Cache: $sysget(l3cache) }
 alias cpu_socket { dem CPU Socket: $de(cpu_sockettype) }
@@ -381,7 +380,6 @@ menu channel,query {
   ..Socket:/cpu_socket
   ..Total Cores:/cpu_cores
   ..-
-  ..L1 Cache:/l1cache
   ..L2 Cache:/l2cache
   ..L3 Cache:/l3cache
   ..-

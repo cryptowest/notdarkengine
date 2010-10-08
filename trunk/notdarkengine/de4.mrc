@@ -332,7 +332,7 @@ alias id3 { dem ID3: $de(id3_test) }
 ;Misc Functions
 ;----
 alias about { action is using NotDarkEngine (notde) by CoreDuo v0.3.7 }
-alias sys { dem OS: $sysget(version)  $+ $dek $+ CPU: $sysget(cpu) $+ , $sysget(clockspeed) $+ ,   $+ $cache $+   $+  $+ $dek $+ Video: $sysget(videocard) $+  ( $+ $sysget(screenres) $+ )  $+ $dek $+ Sound:  $+ $sysget(sound)  $+ $dek $+ Memory: Used: $memory(usedphysical) $+ / $+ $memory(allphysical)  $+ $dek $+ Uptime: $sysget(uptime)  $+ $dek $+ HD Space: Free: $de(harddrive_space_free) $+ / $+ $de(harddrive_space_total)  $+ $dek $+ Connection: $remove($de(adapter_info_all), - Packet Scheduler Miniport ) }
+alias sys { dem OS: $sysget(version)  $+ $dek $+ CPU: $sysget(cpu) $+ , $sysget(clockspeed) $+ ,   $+ $cache $+   $+  $+ $dek $+ Video: $sysget(videocard) $+ $chr(32) $+ ( $+ $sysget(screenres) $+ )  $+ $dek $+ Sound: $+ $chr(32) $+ $sysget(sound)  $+ $dek $+ Memory: Used: $memory(usedphysical) $+ / $+ $memory(allphysical)  $+ $dek $+ Uptime: $sysget(uptime)  $+ $dek $+ HD Space: Free: $de(harddrive_space_free) $+ / $+ $de(harddrive_space_total)  $+ $dek $+ Connection: $remove($de(adapter_info_all), - Packet Scheduler Miniport ) }
 ;Mainboard Functions
 ;----
 alias mobo_manu { dem Mainboard Vendor: $sysget(mobovendor) }

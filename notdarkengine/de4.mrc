@@ -63,15 +63,11 @@ alias newuptime {
 
 }
 alias cache {
-  if ($wmiget(Win32_Processor).L3CacheSize) == NULL) {
-    if ($wmiget(Win32_Processor).L2CacheSize >= 1024) {
-      return $calc(($wmiget(Win32_Processor).L2CacheSize)/1024) MB
-    }
-    else {
-      if ($wmiget(Win32_Processor).L3CacheSize >= 1024) {
-        return $calc(($wmiget(Win32_Processor).L3CacheSize)/1024) MB
-      }
-    }
+  if ($wmiget(Win32_Processor).L2CacheSize >= 1024) {
+    return $calc(($wmiget(Win32_Processor).L2CacheSize)/1024) MB
+  }
+  else {
+    return $wmiget(Win32_Processor).L2CacheSize KB
   }
 }
 
@@ -179,7 +175,7 @@ alias sysget {
   if ($1 = battery) {
     if ($wmiget(Win32_Battery).EstimatedRunTime != 71582788) {
       if ($wmiget(Win32_Battery).EstimatedRunTime >= 60) {
-        return $floor($calc(($wmiget(Win32_Battery).EstimatedRunTime)/60)) hour $calc($wmiget(Win32_Battery).EstimatedRunTime % 60) minutes ( $+ $wmiget(Win32_Battery).EstimatedChargeRemaining $+ % $+ )
+        return $floor($calc(($wmiget(Win32_Battery).EstimatedRunTime)/60)) hours $calc($wmiget(Win32_Battery).EstimatedRunTime % 60) minutes ( $+ $wmiget(Win32_Battery).EstimatedChargeRemaining $+ % $+ )
         } else {
       return $wmiget(Win32_Battery).EstimatedRunTime minutes ( $+ $wmiget(Win32_Battery).EstimatedChargeRemaining $+ % $+ ) }
       } else {
@@ -237,6 +233,7 @@ alias cpuload { dem CPU Load: $sysget(cpuload) }
 ;alias cpuarch { dem CPU Architecture: $de(cpuarchitech) }
 alias cpucount { dem CPU Count: $de(cpucount) }
 alias cpuinfo { dem CPU: $sysget(cpu) $+ , $sysget(clockspeed) $+ ,  $+ $cache $+  ( $+ $sysget(cpuload) Load $+ ) }
+alias l1cache { dem L1 Cache: $de(cpu_cache_l1) }
 alias l2cache { dem L2 Cache: $sysget(l2cache) }
 alias l3cache { dem L3 Cache: $sysget(l3cache) }
 alias cpu_socket { dem CPU Socket: $de(cpu_sockettype) }
@@ -332,7 +329,7 @@ alias id3 { dem ID3: $de(id3_test) }
 ;Misc Functions
 ;----
 alias about { action is using NotDarkEngine (notde) by CoreDuo v0.3.7 }
-alias sys { dem OS: $sysget(version)  $+ $dek $+ CPU: $sysget(cpu) $+ , $sysget(clockspeed) $+ ,   $+ $cache $+   $+  $+ $dek $+ Video: $sysget(videocard) $+ $chr(32) $+ ( $+ $sysget(screenres) $+ )  $+ $dek $+ Sound: $+ $chr(32) $+ $sysget(sound)  $+ $dek $+ Memory: Used: $memory(usedphysical) $+ / $+ $memory(allphysical)  $+ $dek $+ Uptime: $sysget(uptime)  $+ $dek $+ HD Space: Free: $de(harddrive_space_free) $+ / $+ $de(harddrive_space_total)  $+ $dek $+ Connection: $remove($de(adapter_info_all), - Packet Scheduler Miniport ) }
+alias sys { dem OS: $sysget(version)  $+ $dek $+ CPU: $sysget(cpu) $+ , $sysget(clockspeed) $+ ,   $+ $cache $+   $+  $+ $dek $+ Video: $sysget(videocard) $+  ( $+ $sysget(screenres) $+ )  $+ $dek $+ Sound:  $+ $sysget(sound)  $+ $dek $+ Memory: Used: $memory(usedphysical) $+ / $+ $memory(allphysical)  $+ $dek $+ Uptime: $sysget(uptime)  $+ $dek $+ HD Space: Free: $de(harddrive_space_free) $+ / $+ $de(harddrive_space_total)  $+ $dek $+ Connection: $remove($de(adapter_info_all), - Packet Scheduler Miniport ) }
 ;Mainboard Functions
 ;----
 alias mobo_manu { dem Mainboard Vendor: $sysget(mobovendor) }
@@ -380,6 +377,7 @@ menu channel,query {
   ..Socket:/cpu_socket
   ..Total Cores:/cpu_cores
   ..-
+  ..L1 Cache:/l1cache
   ..L2 Cache:/l2cache
   ..L3 Cache:/l3cache
   ..-

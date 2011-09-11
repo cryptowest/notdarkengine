@@ -86,7 +86,7 @@ alias sysget {
     if ($wmiget(Win32_Processor).Manufacturer == GenuineIntel) && (@ !isin $wmiget(Win32_Processor).Name) {
       return $remove($gettok($wmiget(Win32_Processor).Name,$+(1-,$iif($findtok($wmiget(Win32_Processor).Name,CPU,$findtok($wmiget(Win32_Processor).Name,CPU,0,32),32),$calc($v1 -1))),32),(TM),(R),processor)    
     }
-    else return $remove($wmiget(Win32_Processor).Name,(R),(TM),Processor,Mobile,Technology,Dual,Core,Quad-,Quad)
+    else return $remove($wmiget(Win32_Processor).Name,(R),(TM),Processor,Mobile,Technology,Dual,Core,Quad-,Quad,with Radeon HD Graphics)
   }
   if ($1 = l2cache) {
     if ($wmiget(Win32_Processor).L2CacheSize >= 1024) {
@@ -329,7 +329,7 @@ alias id3 { dem ID3: $de(id3_test) }
 ;Misc Functions
 ;----
 alias about { action is using NotDarkEngine (notde) by CoreDuo v0.3.7 }
-alias sys { dem OS: $sysget(version)  $+ $dek $+ CPU: $sysget(cpu) $+ , $sysget(clockspeed) $+ ,   $+ $cache $+   $+  $+ $dek $+ Video: $sysget(videocard) $+  ( $+ $sysget(screenres) $+ )  $+ $dek $+ Sound:  $+ $sysget(sound)  $+ $dek $+ Memory: Used: $memory(usedphysical) $+ / $+ $memory(allphysical)  $+ $dek $+ Uptime: $sysget(uptime)  $+ $dek $+ HD Space: Free: $de(harddrive_space_free) $+ / $+ $de(harddrive_space_total)  $+ $dek $+ Connection: $remove($de(adapter_info_all), - Packet Scheduler Miniport ) }
+alias sys { dem OS: $sysget(version)  $+ $dek $+ CPU: $sysget(cpu) $+ , $sysget(clockspeed) $+ ,   $+ $cache $+   $+  $+ $dek $+ Video: $sysget(videocard) $+  ( $+ $sysget(screenres) $+ )  $+ $dek $+ Sound:  $+ $sysget(sound)  $+ $dek $+ Memory: Used: $memory(usedphysical) $+ / $+ $memory(allphysical)  $+ $dek $+ Uptime: $sysget(uptime)  $+ $dek $+ HD Space: Free: $de(harddrive_space_free) $+ / $+ $de(harddrive_space_total)  $+ $dek $+ Connection: $remove($de(adapter_info_all), - Packet Scheduler Miniport ) }
 ;Mainboard Functions
 ;----
 alias mobo_manu { dem Mainboard Vendor: $sysget(mobovendor) }

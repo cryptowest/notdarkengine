@@ -1,4 +1,4 @@
-;NotDarkEngine (notde) by CoreDuo v0.3.7
+;NotDarkEngine (notde) by CoreDuo v0.3.8
 on *:load:{ echo -ae NotDarkEngine installed sucessfully... | dek 3 | fde }
 alias wmiget {
   var %com = cominfo, %com2 = cominfo2, %com3 = cominfo3
@@ -167,10 +167,10 @@ alias sysget {
     return $wmiget(Win32_BIOS).SMBIOSBIOSVersion
   }
   if ($1 = mobovendor) {
-    return $wmiget(Win32_ComputerSystem).Manufacturer
+    return $wmiget(Win32_BaseBoard).Manufacturer
   }
   if ($1 = mobomodel) {
-    return $wmiget(Win32_ComputerSystem).Model
+    return $wmiget(Win32_BaseBoard).Product
   }
   if ($1 = battery) {
     if ($wmiget(Win32_Battery).EstimatedRunTime != 71582788) {

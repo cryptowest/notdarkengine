@@ -334,8 +334,7 @@ alias sys { dem OS: $sysget(version)  $+ $dek $+ CPU: $sysget(cpu) $+ , $sy
 ;----
 alias mobo_manu { dem Mainboard Vendor: $sysget(mobovendor) }
 alias mobo_name { dem Mainboard Name: $sysget(mobomodel) }
-alias mobo_ver { dem Mainboard Version: $de(mobo_version) }
-alias mobo_all { dem Mainboard: $sysget(mobovendor) $sysget(mobomodel) $+  ( $+ $de(mobo_version) $+ ) }
+alias mobo_all { dem Mainboard: $sysget(mobovendor) $sysget(mobomodel) }
 alias cdrom_drive { dem Optical Drive: $sysget(cdrom) }
 alias video_card_ram { dem Video Card RAM: $sysget(vram) }
 ;Unsupport Functions
@@ -423,7 +422,6 @@ menu channel,query {
   Mainboard
   ..Manufacturer:/mobo_manu
   ..Product Name:/mobo_name
-  ..Version:/mobo_ver
   ..-
   ..Show All:/mobo_all
   Power

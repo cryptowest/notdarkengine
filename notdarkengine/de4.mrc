@@ -262,7 +262,7 @@ alias mem { dem Avaliable Memory: $memory(freephysical) }
 alias usedmem { dem Used Memory: $memory(usedphysical) }
 alias totalmem { dem Total Memory: $memory(allphysical) }
 alias memratio { dem RAM: Used: $memory(usedphysical) $+ / $+ $memory(allphysical) }
-alias vmemratio { dem Virtual RAM: Used: $de(memory_virtual_used) $+ / $+ $de(memory_virtual_total) $+ MB }
+alias vmemratio { dem Pagefile: $wmiget(Win32_PageFileUsage).CurrentUsage $+ / $+ $wmiget(Win32_PageFileUsage).AllocatedBaseSize $+ MB ( $+ Peak: $wmiget(Win32_PageFileUsage).PeakUsage $+ MB) }
 alias memsum { dem RAM: Used: $memory(usedphysical) $+ / $+ $memory(allphysical) ( $+ $de(memory_load) Load $+ ) }
 alias memslots { dem Total Memory Slots: $de(memory_slots) }
 ;Internet Connection Information

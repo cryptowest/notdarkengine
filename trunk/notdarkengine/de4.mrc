@@ -1,4 +1,4 @@
-;NotDarkEngine (notde) by CoreDuo v0.3.8
+;NotDarkEngine (notde) by CoreDuo r38
 on *:load:{ echo -ae NotDarkEngine installed sucessfully... | dek 3 | fde }
 alias wmiget {
   var %com = cominfo, %com2 = cominfo2, %com3 = cominfo3
@@ -328,7 +328,7 @@ alias wamp { dem Playing: $de(winamp) }
 alias id3 { dem ID3: $de(id3_test) }
 ;Misc Functions
 ;----
-alias about { action is using NotDarkEngine (notde) by CoreDuo v0.3.7 }
+alias about { action is using NotDarkEngine (notde) by CoreDuo r38 }
 alias sys { dem OS: $sysget(version)  $+ $dek $+ CPU: $sysget(cpu) $+ , $sysget(clockspeed) $+ ,   $+ $cache $+   $+  $+ $dek $+ Video: $sysget(videocard) $+  ( $+ $sysget(screenres) $+ )  $+ $dek $+ Sound:  $+ $sysget(sound)  $+ $dek $+ Memory: Used: $memory(usedphysical) $+ / $+ $memory(allphysical)  $+ $dek $+ Uptime: $sysget(uptime)  $+ $dek $+ HD Space: Free: $de(harddrive_space_free) $+ / $+ $de(harddrive_space_total)  $+ $dek $+ Connection: $remove($de(adapter_info_all), - Packet Scheduler Miniport ) }
 ;Mainboard Functions
 ;----
